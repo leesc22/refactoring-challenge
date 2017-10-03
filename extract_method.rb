@@ -1,26 +1,35 @@
 #extract_method.rb
 #use this as tips for the first one : http://refactoring.com/catalog/extractMethod.html
 
-username = "Alice"
-
-if ( username.length > 3 && username.length <= 10 ) || ( username.downcase.start_with?("a", "e", "i", "o", "u") )
-	puts "Congratulations #{username}! You won 10 dollars!"
-else
-	puts "Thanks for joining!"
+def min_length(string)
+	string.length > 3
 end
+
+def max_length(string)
+	string.length <=10
+end
+
+def starts_with_letters(string, *letters)
+	letters.include?(string[0].downcase)
+end
+
+def check_username(string, *letters)
+	( min_length(string) && max_length(string) ) ||  starts_with_letters(string, *letters)
+end
+
+def print_message(string, *letters, amount)
+	if check_username(string, *letters)	
+		puts "Congratulations #{string}! You won #{amount} dollars!"
+	else
+		puts "Thanks for joining!"
+	end
+end
+
+username = "Alice"
+print_message(username, "a", "e", "i", "o", "u", 10)
 
 username = "Bobby"
-
-if ( username.length > 3 && username.length <= 10 ) || ( username.downcase.start_with?("b", "g", "l", "p") )
-	puts "Congratulations #{username}! You won 50 dollars!"
-else
-	puts "Thanks for joining!"
-end
+print_message(username, "b", "g", "l", "p", 50)
 
 username = "Xena"
-
-if ( username.length > 3 && username.length <= 10 ) || ( username.downcase.start_with?("q", "u", "x", "y", "z") )
-	puts "Congratulations #{username}! You won 100 dollars!"
-else
-	puts "Thanks for joining!"
-end
+print_message(username, "q", "u", "x", "y", "z", 100)
