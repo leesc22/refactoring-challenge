@@ -25,11 +25,6 @@ def print_message(string, *letters, amount)
 	end
 end
 
-username = "Alice"
-print_message(username, "a", "e", "i", "o", "u", 10)
-
-username = "Bobby"
-print_message(username, "b", "g", "l", "p", 50)
-
-username = "Xena"
-print_message(username, "q", "u", "x", "y", "z", 100)
+print_message("Alice", "a", "e", "i", "o", "u", 10)
+print_message("Bobby", "b", "g", "l", "p", 50)
+print_message("Xena", "q", "u", "x", "y", "z", 100)
